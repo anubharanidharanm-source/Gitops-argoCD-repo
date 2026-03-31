@@ -1,19 +1,33 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: portfolio-web-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: "gce"
+#     networking.gke.io/load-balancer-type: "External"
+# spec:
+#   rules:
+#     - host: demo.anu.in
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: portfolio-web-svc
+#                 port:
+#                   number: 80
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: portfolio-web-ingress
   annotations:
-    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.class: "gce"                  # Use GCE ingress
     networking.gke.io/load-balancer-type: "External"
 spec:
-  rules:
-    - host: demo.anu.in
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: portfolio-web-svc
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: portfolio-web-svc
+      port:
+        number: 80
