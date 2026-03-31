@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: portfolio-web-lb
+  annotations:
+    cloud.google.com/load-balancer-type: "external"
   labels:
     app: portfolio-web
 spec:
