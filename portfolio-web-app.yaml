@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: portfolio-container
-        image: asia-south1-docker.pkg.dev/testing-bharani/portfolio-artifact-registry/portfolio-website:27
+        image: asia-south1-docker.pkg.dev/testing-bharani/portfolio-artifact-registry/portfolio-website:28
         ports:
         - containerPort: 80
         readinessProbe:
