@@ -3,17 +3,17 @@ kind: Ingress
 metadata:
   name: portfolio-web-ingress
   annotations:
-    kubernetes.io/ingress.class: "gce"  # GCP Ingress
-    kubernetes.io/ingress.global-static-ip-name: "portfolio-ip" # Optional: static IP
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/load-balancer-type: "External"
 spec:
   rules:
-  - host: demo.anu.in  # Optional, your domain
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: portfolio-web-service
-            port:
-              number: 80
+    - host: demo.anu.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-web-svc
+                port:
+                  number: 80
